@@ -66,7 +66,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     protected virtual void Die()
     {
         // play death animation coroutine
-        Destroy(gameObject);
+        OnObjectDespawn();
     }
 
     public void OnObjectSpawn()
@@ -76,6 +76,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
 
     public void OnObjectDespawn()
     {
+        Destroy(gameObject);
         Debug.Log($"{name} is despawned!");
     }
 }

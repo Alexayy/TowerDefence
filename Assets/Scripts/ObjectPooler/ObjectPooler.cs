@@ -64,7 +64,13 @@ public class ObjectPooler : MonoBehaviour
             pooledObject.OnObjectSpawn();
 
         poolDictionary[tag].Enqueue(objectToSpawn);
-        
+
+        if (poolDictionary[tag].Count == 0)
+        {
+            Debug.Log("Nothing to spawn!");
+            return null;
+        }
+
         return objectToSpawn;
     }
 }

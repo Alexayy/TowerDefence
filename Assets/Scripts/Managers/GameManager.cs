@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 
     private void SpawnAtInterval()
     {
-        // yield return new WaitForSeconds(1f);
-        ObjectPooler.Instance.SpawnFromPool($"Enemy{Random.Range(1, 5)}", _spawnLocation.position, Quaternion.identity);
+        ObjectPooler.Instance.SpawnFromPool($"Enemy1", _spawnLocation.position, Quaternion.identity);
     }
 }

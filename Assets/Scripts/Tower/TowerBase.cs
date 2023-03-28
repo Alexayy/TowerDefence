@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class TowerBase : MonoBehaviour
@@ -53,6 +49,15 @@ public class TowerBase : MonoBehaviour
 
     private void Shoot()
     {
+        GameObject bulletGameObj = ObjectPooler.Instance.SpawnFromPool("Bullet", transform.position, Quaternion.identity);
+        Bullet bullet = bulletGameObj.GetComponent<Bullet>();
+        if (bullet != null && _target != null)
+        {
+            bullet.SeekAndDamage(_target);
+            _target.GetComponent<EnemyBase>().TakeDamage(_damage);
+            Debug.Log($"Target {_target.name} shot for {_damage}");
+        }
+
         Debug.Log($"Shoot!");
     }
     
@@ -77,11 +82,6 @@ public class TowerBase : MonoBehaviour
             _target = nearestEnemy.transform;
         else
             _target = null;
-    }
-    
-    protected virtual void Fire()
-    {
-        _target.GetComponent<EnemyBase>().TakeDamage(_damage);
     }
 
     protected virtual void Upgrade()
