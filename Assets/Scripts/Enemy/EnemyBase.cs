@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public abstract class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour, IPooledObject
 {
     [SerializeField] private float _speed;
     [SerializeField] private int _health;
@@ -66,5 +66,15 @@ public abstract class EnemyBase : MonoBehaviour
     {
         // play death animation coroutine
         Destroy(gameObject);
+    }
+
+    public void OnObjectSpawn()
+    {
+        Debug.Log($"{name} is spawned!");
+    }
+
+    public void OnObjectDespawn()
+    {
+        Debug.Log($"{name} is despawned!");
     }
 }
