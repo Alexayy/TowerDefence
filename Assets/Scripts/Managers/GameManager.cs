@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +23,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        InvokeRepeating("SpawnAtInterval", 0f, 5f);
+    }
+
     public void TakeDamage(int damage)
     {
         if (health <= 0)
@@ -29,9 +36,9 @@ public class GameManager : MonoBehaviour
         health -= damage;
     }
 
-    private IEnumerator SpawnAtInterval()
+    private void SpawnAtInterval()
     {
-        yield return new WaitForSeconds(2f);
+        // yield return new WaitForSeconds(1f);
         ObjectPooler.Instance.SpawnFromPool($"Enemy{Random.Range(1, 5)}", _spawnLocation.position, Quaternion.identity);
     }
 }

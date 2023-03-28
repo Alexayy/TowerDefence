@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BaseFloor
   - PathFloor
+  - Enemy
   layers:
   - Default
   - TransparentFX

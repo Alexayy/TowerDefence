@@ -253,3 +253,5 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _target: {fileID: 0}
   _fireTimer: 0
+  enemyTag: Enemy
+  _shootingBarrels: {fileID: 792364186454855205}

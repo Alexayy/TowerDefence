@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log($"{hit.collider.tag}");
+                
                 if (hit.collider.tag == "BaseFloor")
                 {
                     ObjectPooler.Instance.SpawnFromPool($"Turret{turretCode}", hit.transform.position,

@@ -58,6 +58,8 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _target: {fileID: 0}
   _fireTimer: 0
+  enemyTag: Enemy
+  _shootingBarrels: {fileID: 0}
 --- !u!1 &6907812152427818490
 GameObject:
   m_ObjectHideFlags: 0

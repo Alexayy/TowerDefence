@@ -35,6 +35,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
         else
         {
             gameObject.SetActive(false);
+            Destroy(gameObject);
             GameManager.Instance.TakeDamage(_damage);
         }
     }

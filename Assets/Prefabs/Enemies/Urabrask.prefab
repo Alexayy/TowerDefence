@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: -5045262686341437189}
   m_Layer: 0
   m_Name: Urabrask
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cffbdf6fd25974291a1375b45f1da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 24
+  _speed: 15
   _health: 20
   _damage: 4
   _reward: 5
