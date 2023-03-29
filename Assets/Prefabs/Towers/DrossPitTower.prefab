@@ -244,8 +244,9 @@ MonoBehaviour:
   _cost: 16
   _sellPrice: 10
   _damage: 6
-  _range: 12
+  _range: 30
   _fireInterval: 0.6
+  _fireCountdown: 0
   _upgradeCost: 24
   _damageUpgrade: 2
   _upgradeFireInterval: 0.01
@@ -254,4 +255,3 @@ MonoBehaviour:
   _target: {fileID: 0}
   _fireTimer: 0
   enemyTag: Enemy
-  _shootingBarrels: {fileID: 792364186454855205}

@@ -4,8 +4,14 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager Instance;
     private GameObject _turretToBuild;
-    public GameObject turretPrefab;
-
+    
+    [Header("Turret types")]
+    public GameObject turretBasillica;
+    public GameObject turretBay;
+    public GameObject turretFurnace;
+    public GameObject turretPitter;
+    public GameObject turretHunter;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -14,13 +20,13 @@ public class BuildManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        _turretToBuild = turretPrefab;
-    }
-
     public GameObject GetTurretToBuild()
     {
         return _turretToBuild;
+    }
+
+    public void SetTurretToBuild(GameObject turret)
+    {
+        _turretToBuild = turret;
     }
 }

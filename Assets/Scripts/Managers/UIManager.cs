@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _drosTurret;
     [SerializeField] private Button _hunterTurret;
     [SerializeField] private Button _furnaceTurret;
+    
+    [SerializeField] private Shop _shop;
 
     private void Start()
     {
@@ -32,33 +34,33 @@ public class UIManager : MonoBehaviour
         _lives.text = $"Lives: {GameManager.Instance.health.ToString()}";
     }
 
-    public void SpawnBasillicaTurret() { Spawn((int)TurretCode.FairBasillica); }
-    public void SpawnBayTurret() { Spawn((int)TurretCode.SurgicalBay); }
-    public void SpawnDrosTurret() { Spawn((int)TurretCode.DrosPitter); }
-    public void SpawnHunterTurret() { Spawn((int)TurretCode.HuntersMaze); }
-    public void SpawnFurnaceTurret() { Spawn((int)TurretCode.AutonomousFurnace); }
+    public void SpawnBasillicaTurret() { _shop.PurchaseBasillicaTurret(); }
+    public void SpawnBayTurret() { _shop.PurchaseBayTurret(); }
+    public void SpawnDrosTurret() { _shop.PurchasePitterTurret(); }
+    public void SpawnHunterTurret() { _shop.PurchaseHunterTurret(); }
+    public void SpawnFurnaceTurret() { _shop.PurchaseFurnaceTurret(); }
 
-    private void Spawn(int turretCode)
-    {
-        if (Input.GetMouseButtonUp(0))
-        {
-            Debug.Log("Left mouse button clicked!");
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log($"{hit.collider.tag}");
-                
-                if (hit.collider.tag == "BaseFloor")
-                {
-                    ObjectPooler.Instance.SpawnFromPool($"Turret{turretCode}", hit.transform.position,
-                        Quaternion.identity);
-                    Debug.Log("Object Spawned?");
-                }
-            }
-        }
-    }
+    // private void Spawn(int turretCode)
+    // {
+    //     if (Input.GetMouseButtonUp(0))
+    //     {
+    //         Debug.Log("Left mouse button clicked!");
+    //         RaycastHit hit;
+    //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //
+    //         if (Physics.Raycast(ray, out hit))
+    //         {
+    //             Debug.Log($"{hit.collider.tag}");
+    //             
+    //             if (hit.collider.tag == "BaseFloor")
+    //             {
+    //                 ObjectPooler.Instance.SpawnFromPool($"Turret{turretCode}", hit.transform.position,
+    //                     Quaternion.identity);
+    //                 Debug.Log("Object Spawned?");
+    //             }
+    //         }
+    //     }
+    // }
 
     public enum TurretCode
     {

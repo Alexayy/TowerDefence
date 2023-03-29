@@ -85,5 +85,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     public void SetWaypoints()
     {
         _wayPoints = WaypointManager.Instance.GetWaypoints();
+        if (_wayPoints == null)
+            return;
     }
 }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 12
-  _health: 70
+  _maxHealth: 70
   _damage: 4
   _reward: 10
 --- !u!1 &8165849449088849770
