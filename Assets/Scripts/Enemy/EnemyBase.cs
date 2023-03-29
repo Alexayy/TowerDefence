@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 
 public abstract class EnemyBase : MonoBehaviour, IPooledObject
 {
     [SerializeField] private float _speed;
-    [SerializeField] private int _health;
+    [FormerlySerializedAs("_health")] [SerializeField] private int _maxHealth;
+    private int _currentHealth;
     [SerializeField] private int _damage;
     [SerializeField] private int _reward;
 
@@ -19,7 +21,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     
     private void Awake()
     {
-        _wayPoints = WaypointManager.Instance.GetWaypoints();
+        // _wayPoints = WaypointManager.Instance.GetWaypoints();
     }
 
     private void Update()
@@ -48,19 +50,17 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
             Debug.Log("Player lost!");
             return;
         }
-
-        playerHealth -= _damage;
     }
 
     public virtual void TakeDamage(int damageTaken)
     {
-        if (_health <= 0)
+        if (_maxHealth <= 0)
         {
             Die();
             return;
         }
         
-        _health -= damageTaken;
+        _maxHealth -= damageTaken;
     }
 
     protected virtual void Die()
@@ -71,12 +71,19 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
+        currentWayPointIndex = 0;
+        _currentHealth = _maxHealth;
         Debug.Log($"{name} is spawned!");
     }
 
     public void OnObjectDespawn()
     {
-        Destroy(gameObject);
+        ObjectPooler.Instance.ReturnToPool(gameObject);
         Debug.Log($"{name} is despawned!");
+    }
+
+    public void SetWaypoints()
+    {
+        _wayPoints = WaypointManager.Instance.GetWaypoints();
     }
 }

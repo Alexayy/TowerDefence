@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IPooledObject
 {
     private Transform _target;
     public float speed = 50f;
+    [SerializeField] private float lifespan = 2.0f;
     
     public void SeekAndDamage(Transform target)
     {
@@ -34,6 +35,16 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("HIT");
         Destroy(gameObject);
-        Destroy(_target.gameObject);
+    }
+
+    public void OnObjectSpawn()
+    {
+        Debug.Log("AAA");
+        Invoke("Despawn", lifespan);
+    }
+
+    public void OnObjectDespawn()
+    {
+        CancelInvoke();
     }
 }

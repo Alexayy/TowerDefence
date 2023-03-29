@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private EnemyBase[] _enemyPrefabs;
     [SerializeField] private TowerBase[] _towerPrefabs;
-    [SerializeField] private Transform _spawnLocation;
+    public Transform spawnLocation;
 
     [Header("Player")] 
     public int health;
@@ -28,6 +26,13 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("SpawnAtInterval", 0f, 5f);
     }
 
+    private void EndGame()
+    {
+        CancelInvoke("SpawnAtInterval");
+        
+        // Lives for lose / win
+    }
+
     public void TakeDamage(int damage)
     {
         if (health <= 0)
@@ -38,6 +43,9 @@ public class GameManager : MonoBehaviour
 
     private void SpawnAtInterval()
     {
-        ObjectPooler.Instance.SpawnFromPool($"Enemy1", _spawnLocation.position, Quaternion.identity);
+        int enemyIndex = Random.Range(0, _enemyPrefabs.Length);
+
+        GameObject enemy = ObjectPooler.Instance.SpawnFromPool($"Enemy{enemyIndex}", spawnLocation.position, Quaternion.identity);
+        enemy.GetComponent<EnemyBase>().SetWaypoints();
     }
 }
