@@ -242,11 +242,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f256f0a23958249947d52ccd5a63ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cost: 12
+  _cost: 120
   _sellPrice: 7
   _damage: 4
   _range: 55
   _fireInterval: 1
+  _fireCountdown: 0
   _upgradeCost: 10
   _damageUpgrade: 2
   _upgradeFireInterval: 0.1
@@ -254,3 +255,4 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _target: {fileID: 0}
   _fireTimer: 0
+  enemyTag: Enemy

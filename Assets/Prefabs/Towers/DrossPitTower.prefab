@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e8104e2e9cc174cb592198eeac746d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cost: 16
-  _sellPrice: 10
+  _cost: 160
+  _sellPrice: 100
   _damage: 6
   _range: 30
   _fireInterval: 0.6

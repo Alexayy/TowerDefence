@@ -1,10 +1,9 @@
-using System;
-using System.Linq;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
     private BuildManager _buildManager;
+    public TowerBase towerBase;
 
     private void Start()
     {

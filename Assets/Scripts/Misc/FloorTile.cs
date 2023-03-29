@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class FloorTile : MonoBehaviour
 {
     [SerializeField] private Color _hoverColor;
-    private GameObject _currentTurret;
+    [FormerlySerializedAs("_currentTurret")] public GameObject currentTurret;
     private Renderer _renderer;
     private Color _defaultColor;
     private BuildManager _buildManager;
@@ -17,7 +19,10 @@ public class FloorTile : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (_buildManager.GetTurretToBuild() == null)
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+        
+        if (_buildManager.CanBuild)
             return;
         
         _renderer.material.color = _hoverColor;
@@ -30,17 +35,16 @@ public class FloorTile : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (_buildManager.GetTurretToBuild() == null)
+        if (!_buildManager.CanBuild)
             return;
         
-        if (_currentTurret != null)
+        if (currentTurret != null)
         {
             Debug.Log("Can't build there!");
             return;
         }
         
         // Build a turret
-        GameObject turretToBuild = _buildManager.GetTurretToBuild();
-        _currentTurret = Instantiate(turretToBuild, transform.position + new Vector3(0f, 2f, 0f), transform.rotation);
+        _buildManager.BuildTurretOn(this);
     }
 }

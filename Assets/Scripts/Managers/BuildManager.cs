@@ -3,14 +3,16 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager Instance;
-    private GameObject _turretToBuild;
-    
+    private TowerBase _turretToBuild;
+
+    public bool CanBuild => _turretToBuild != null;
+
     [Header("Turret types")]
-    public GameObject turretBasillica;
-    public GameObject turretBay;
-    public GameObject turretFurnace;
-    public GameObject turretPitter;
-    public GameObject turretHunter;
+    public TowerBase turretBasillica;
+    public TowerBase turretBay;
+    public TowerBase turretFurnace;
+    public TowerBase turretPitter;
+    public TowerBase turretHunter;
     
     private void Awake()
     {
@@ -20,13 +22,26 @@ public class BuildManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public GameObject GetTurretToBuild()
-    {
-        return _turretToBuild;
-    }
-
-    public void SetTurretToBuild(GameObject turret)
+    public void SetTurretToBuild(TowerBase turret)
     {
         _turretToBuild = turret;
+    }
+
+    public void BuildTurretOn(FloorTile floorTile)
+    {
+        if (GameManager.Currency < _turretToBuild.Cost)
+        {
+            Debug.Log("Not enough mana for that!");
+            return;
+        }
+
+        GameManager.Currency -= _turretToBuild.Cost;
+        GameObject turret = Instantiate(_turretToBuild.gameObject, TurretPlacementPosition(floorTile), Quaternion.identity);
+        floorTile.currentTurret = turret;
+    }
+
+    private static Vector3 TurretPlacementPosition(FloorTile floorTile)
+    {
+        return floorTile.transform.position + new Vector3(0f, 2f, 0f);
     }
 }

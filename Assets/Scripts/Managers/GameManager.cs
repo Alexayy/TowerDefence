@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TowerBase[] _towerPrefabs;
     public Transform spawnLocation;
 
-    [Header("Player")] 
-    public int health;
-    public int currency;
+    [Header("Player Stats")] 
+    public static int Health;
+    public int startingHealth = 50;
+    public static int Currency;
+    public int startMoneyAmount = 500;
     
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Health = startingHealth;
+        Currency = startMoneyAmount;
         InvokeRepeating("SpawnAtInterval", 0f, 5f);
     }
 
@@ -35,10 +39,10 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (health <= 0)
+        if (Health <= 0)
             Debug.Log("DIE PLAYER");
 
-        health -= damage;
+        Health -= damage;
     }
 
     private void SpawnAtInterval()

@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -29,9 +30,12 @@ public class UIManager : MonoBehaviour
         _drosTurret.onClick.AddListener(SpawnDrosTurret);
         _hunterTurret.onClick.AddListener(SpawnHunterTurret);
         _furnaceTurret.onClick.AddListener(SpawnFurnaceTurret);
+    }
 
-        _currency.text = $"${GameManager.Instance.currency.ToString()}";
-        _lives.text = $"Lives: {GameManager.Instance.health.ToString()}";
+    private void Update()
+    {
+        _currency.text = $"${GameManager.Currency.ToString()}";
+        _lives.text = $"Lives: {GameManager.Health.ToString()}";
     }
 
     public void SpawnBasillicaTurret() { _shop.PurchaseBasillicaTurret(); }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TowerBase : MonoBehaviour
+public abstract class TowerBase : MonoBehaviour
 {
     [Header("Base Stats")]
     [SerializeField] private int _cost;
@@ -21,6 +21,9 @@ public class TowerBase : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private float _fireTimer = 0f;
     public string enemyTag = "Enemy";
+
+    public int Cost => _cost;
+    public int SellPrice => _sellPrice;
 
     private void Start()
     {
@@ -84,7 +87,7 @@ public class TowerBase : MonoBehaviour
             _target = null;
     }
 
-    protected virtual void Upgrade()
+    public virtual void Upgrade()
     {
         _damage += _damageUpgrade;
         _range += _upgradeRange;
