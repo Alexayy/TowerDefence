@@ -1,8 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using TMPro;
 
 public class EnemyUrabrask : EnemyBase
 {
-    
+    public string nameOfThis = "Urabrask";
+    public TMP_Text nameDisplay;
+
+    private void Start()
+    {
+        nameDisplay.text = nameOfThis;
+    }
 }

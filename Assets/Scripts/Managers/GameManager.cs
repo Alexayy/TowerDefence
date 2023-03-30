@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] private EnemyBase[] _enemyPrefabs;
-    [SerializeField] private TowerBase[] _towerPrefabs;
     public Transform spawnLocation;
 
     [Header("Player Stats")] 
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnAtInterval()
     {
-        int enemyIndex = Random.Range(0, _enemyPrefabs.Length);
+        int enemyIndex = Random.Range(1, _enemyPrefabs.Length);
 
         GameObject enemy = ObjectPooler.Instance.SpawnFromPool($"Enemy{enemyIndex}", spawnLocation.position, Quaternion.identity);
         enemy.GetComponent<EnemyBase>().SetWaypoints();

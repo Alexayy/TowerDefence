@@ -3,27 +3,27 @@ using UnityEngine;
 public abstract class TowerBase : MonoBehaviour
 {
     [Header("Base Stats")]
-    [SerializeField] private int _cost;
-    [SerializeField] private int _sellPrice;
-    [SerializeField] private int _damage;
-    [SerializeField] private float _range;
-    [SerializeField] private float _fireInterval;
-    [SerializeField] private float _fireCountdown;
+    public int _cost;
+    public int _sellPrice;
+    public int _damage;
+    public float _range;
+    public float _fireInterval;
+    public float _fireCountdown;
     
     [Header("Upgrade stats")]
-    [SerializeField] private int _upgradeCost;
-    [SerializeField] private int _damageUpgrade;
-    [SerializeField] private float _upgradeFireInterval;
-    [SerializeField] private float _upgradeRange;
+    public int _upgradeCost;
+    public int _damageUpgrade;
+    public float _upgradeFireInterval;
+    public float _upgradeRange;
 
     [Header("Other Stuff")] 
-    [SerializeField] private GameManager _gameManager;
     [SerializeField] private Transform _target;
     [SerializeField] private float _fireTimer = 0f;
     public string enemyTag = "Enemy";
 
     public int Cost => _cost;
     public int SellPrice => _sellPrice;
+    public int UpgradePrice => _upgradeCost;
 
     private void Start()
     {
@@ -87,11 +87,9 @@ public abstract class TowerBase : MonoBehaviour
             _target = null;
     }
 
-    public virtual void Upgrade()
+    public void Sell()
     {
-        _damage += _damageUpgrade;
-        _range += _upgradeRange;
-        _fireInterval += _upgradeFireInterval;
+        GameManager.Currency += _sellPrice;
     }
 
     private void OnDrawGizmosSelected()

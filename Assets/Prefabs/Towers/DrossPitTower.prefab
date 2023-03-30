@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6165083650873836317}
-  - component: {fileID: -5300702032128203999}
+  - component: {fileID: -1971759540366301305}
   m_Layer: 0
   m_Name: DrossPitTower
   m_TagString: Untagged
@@ -229,7 +229,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5300702032128203999
+--- !u!114 &-1971759540366301305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,17 +241,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e8104e2e9cc174cb592198eeac746d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cost: 160
-  _sellPrice: 100
-  _damage: 6
-  _range: 30
-  _fireInterval: 0.6
-  _fireCountdown: 0
-  _upgradeCost: 24
+  _cost: 200
+  _sellPrice: 150
+  _damage: 10
+  _range: 20
+  _fireInterval: 1
+  _fireCountdown: 1
+  _upgradeCost: 70
   _damageUpgrade: 2
-  _upgradeFireInterval: 0.01
+  _upgradeFireInterval: 0.1
   _upgradeRange: 1
-  _gameManager: {fileID: 0}
   _target: {fileID: 0}
   _fireTimer: 0
   enemyTag: Enemy

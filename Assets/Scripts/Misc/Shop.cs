@@ -3,7 +3,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     private BuildManager _buildManager;
-    public TowerBase towerBase;
+    // public TowerBase towerBase;
 
     private void Start()
     {

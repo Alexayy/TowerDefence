@@ -10,11 +10,52 @@ public class FloorTile : MonoBehaviour
     private Color _defaultColor;
     private BuildManager _buildManager;
 
+    public TowerBase towerBase;
+
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
         _defaultColor = _renderer.material.color;
         _buildManager = BuildManager.Instance;
+    }
+
+    void BuildTurret(TowerBase towerBase)
+    {
+        if (GameManager.Currency < towerBase.Cost)
+        {
+            Debug.Log("Not enough mana for that!");
+            return;
+        }
+
+        GameManager.Currency -= towerBase.Cost;
+        GameObject turretGo = Instantiate(towerBase.gameObject, BuildManager.TurretPlacementPosition(this), Quaternion.identity);
+        currentTurret = turretGo;
+        this.towerBase = towerBase;
+    }
+
+    public void UpgradeTurret()
+    {
+        if (GameManager.Currency < towerBase.UpgradePrice)
+        {
+            Debug.Log("Not enough mana for that!");
+            return;
+        }
+
+        var baseTowerUpgrade = currentTurret.GetComponent<TowerBase>();
+        GameManager.Currency -= towerBase.UpgradePrice;
+        baseTowerUpgrade._damage += baseTowerUpgrade._damageUpgrade;
+        baseTowerUpgrade._range += baseTowerUpgrade._upgradeRange;
+        baseTowerUpgrade._upgradeCost += baseTowerUpgrade._upgradeCost;
+    }
+
+    public void SellTurret()
+    {
+        if (towerBase != null)
+        {
+            towerBase.Sell();
+            Destroy(currentTurret);
+            towerBase = null;
+        }
     }
 
     private void OnMouseEnter()
@@ -35,9 +76,6 @@ public class FloorTile : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-
         if (currentTurret != null)
         {
             _buildManager.SelectTileWithTurret(this);
@@ -48,7 +86,7 @@ public class FloorTile : MonoBehaviour
             return;
         
         // Build a turret
-        _buildManager.BuildTurretOn(this);
+        BuildTurret(_buildManager.GetTurretTobuild());
     }
 
     public Vector3 GetBuildPosition()

@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour, IPooledObject
     private void HitTarget()
     {
         Debug.Log($"HIT");
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public void OnObjectSpawn()

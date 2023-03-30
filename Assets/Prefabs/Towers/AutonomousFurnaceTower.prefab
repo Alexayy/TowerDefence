@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 365569592134311386}
-  - component: {fileID: -2890957197358915278}
+  - component: {fileID: -9207321255707876481}
   m_Layer: 0
   m_Name: AutonomousFurnaceTower
   m_TagString: Untagged
@@ -133,7 +133,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2890957197358915278
+--- !u!114 &-9207321255707876481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,17 +145,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674dc4b9823b7044688a9da2b0799f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cost: 100
-  _sellPrice: 50
-  _damage: 1
-  _range: 25
-  _fireInterval: 0.1
-  _fireCountdown: 0
-  _upgradeCost: 10
-  _damageUpgrade: 1
+  _cost: 150
+  _sellPrice: 80
+  _damage: 5
+  _range: 10
+  _fireInterval: 1
+  _fireCountdown: 0.1
+  _upgradeCost: 125
+  _damageUpgrade: 11
   _upgradeFireInterval: 0.01
-  _upgradeRange: 0.5
-  _gameManager: {fileID: 0}
+  _upgradeRange: 0.1
   _target: {fileID: 0}
   _fireTimer: 0
   enemyTag: Enemy

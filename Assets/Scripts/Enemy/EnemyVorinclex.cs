@@ -1,8 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using TMPro;
 
 public class EnemyVorinclex : EnemyBase
 {
+    public string nameOfThis = "Vorinclex";
+    public TMP_Text nameDisplay;
 
+    private void Start()
+    {
+        nameDisplay.text = nameOfThis;
+    }
 }

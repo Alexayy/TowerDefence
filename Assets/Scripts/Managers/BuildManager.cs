@@ -51,20 +51,12 @@ public class BuildManager : MonoBehaviour
         DeselectTile();
     }
 
-    public void BuildTurretOn(FloorTile floorTile)
+    public TowerBase GetTurretTobuild()
     {
-        if (GameManager.Currency < _turretToBuild.Cost)
-        {
-            Debug.Log("Not enough mana for that!");
-            return;
-        }
-
-        GameManager.Currency -= _turretToBuild.Cost;
-        GameObject turret = Instantiate(_turretToBuild.gameObject, TurretPlacementPosition(floorTile), Quaternion.identity);
-        floorTile.currentTurret = turret;
+        return _turretToBuild;
     }
 
-    private static Vector3 TurretPlacementPosition(FloorTile floorTile)
+    public static Vector3 TurretPlacementPosition(FloorTile floorTile)
     {
         return floorTile.transform.position + new Vector3(0f, 2f, 0f);
     }

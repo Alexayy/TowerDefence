@@ -1,5 +1,8 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public abstract class EnemyBase : MonoBehaviour, IPooledObject
 {
@@ -9,13 +12,12 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     [SerializeField] private int _damage;
     [SerializeField] private int _reward;
 
+    [SerializeField] private Slider healthSlider;
+
     private Vector3[] _wayPoints;
     private int currentWayPointIndex;
 
     public GameObject deathEffect;
-    
-    public int Reward { get { return _reward; } }
-    public int Damage { get { return _damage; } }
     
     private void Awake()
     {
@@ -42,13 +44,14 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
 
     public void TakeDamage(int damageTaken)
     {
-        if (_maxHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Die();
             return;
         }
         
-        _maxHealth -= damageTaken;
+        _currentHealth -= damageTaken;
+        healthSlider.value = (float)_currentHealth / (float)_maxHealth;
     }
 
     protected virtual void Die()

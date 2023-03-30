@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -17,7 +15,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private Shop _shop;
 
-    private void Start()
+    private void Awake()
     {
         _basillicaTurret.onClick.RemoveAllListeners();
         _bayTurret.onClick.RemoveAllListeners();
@@ -43,35 +41,4 @@ public class UIManager : MonoBehaviour
     public void SpawnDrosTurret() { _shop.PurchasePitterTurret(); }
     public void SpawnHunterTurret() { _shop.PurchaseHunterTurret(); }
     public void SpawnFurnaceTurret() { _shop.PurchaseFurnaceTurret(); }
-
-    // private void Spawn(int turretCode)
-    // {
-    //     if (Input.GetMouseButtonUp(0))
-    //     {
-    //         Debug.Log("Left mouse button clicked!");
-    //         RaycastHit hit;
-    //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //
-    //         if (Physics.Raycast(ray, out hit))
-    //         {
-    //             Debug.Log($"{hit.collider.tag}");
-    //             
-    //             if (hit.collider.tag == "BaseFloor")
-    //             {
-    //                 ObjectPooler.Instance.SpawnFromPool($"Turret{turretCode}", hit.transform.position,
-    //                     Quaternion.identity);
-    //                 Debug.Log("Object Spawned?");
-    //             }
-    //         }
-    //     }
-    // }
-
-    public enum TurretCode
-    {
-        FairBasillica = 1,
-        SurgicalBay = 2,
-        AutonomousFurnace = 3,
-        DrosPitter = 4,
-        HuntersMaze = 5,
-    }
 }

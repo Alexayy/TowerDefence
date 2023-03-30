@@ -48,15 +48,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cost: 200
   _sellPrice: 120
-  _damage: 18
-  _range: 15
-  _fireInterval: 1.3
-  _fireCountdown: 0
-  _upgradeCost: 8
-  _damageUpgrade: 1
+  _damage: 10
+  _range: 10
+  _fireInterval: 1
+  _fireCountdown: 0.5
+  _upgradeCost: 100
+  _damageUpgrade: 10
   _upgradeFireInterval: 0.01
   _upgradeRange: 1
-  _gameManager: {fileID: 0}
   _target: {fileID: 0}
   _fireTimer: 0
   enemyTag: Enemy
