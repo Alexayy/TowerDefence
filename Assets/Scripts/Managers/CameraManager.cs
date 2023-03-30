@@ -18,7 +18,7 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_WEBGL
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
         
         if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness)
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
