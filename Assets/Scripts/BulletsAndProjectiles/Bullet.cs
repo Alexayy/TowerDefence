@@ -3,12 +3,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IPooledObject
 {
     private Transform _target;
+    private EnemyBase _enemy;
     public float speed = 50f;
     [SerializeField] private float lifespan = 2.0f;
     
     public void SeekAndDamage(Transform target)
     {
         _target = target;
+        _enemy = _target.GetComponent<EnemyBase>();
     }
 
     private void Update()
@@ -33,8 +35,8 @@ public class Bullet : MonoBehaviour, IPooledObject
 
     private void HitTarget()
     {
-        Debug.Log("HIT");
-        Destroy(gameObject);
+        Debug.Log($"HIT");
+        // Destroy(gameObject);
     }
 
     public void OnObjectSpawn()

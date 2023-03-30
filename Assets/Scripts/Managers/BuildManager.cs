@@ -5,6 +5,10 @@ public class BuildManager : MonoBehaviour
     public static BuildManager Instance;
     private TowerBase _turretToBuild;
 
+    private FloorTile _selectedTileWithTurret;
+
+    public FloorTileUI floorTileUI;
+    
     public bool CanBuild => _turretToBuild != null;
 
     [Header("Turret types")]
@@ -22,9 +26,29 @@ public class BuildManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void SelectTileWithTurret(FloorTile tile)
+    {
+        if (_selectedTileWithTurret == tile)
+        {
+            DeselectTile();
+            return;
+        }
+        
+        _selectedTileWithTurret = tile;
+        _turretToBuild = null;
+        floorTileUI.SetTarget(tile);
+    }
+
+    public void DeselectTile()
+    {
+        _selectedTileWithTurret = null;
+        floorTileUI.Hide();
+    }
+    
     public void SetTurretToBuild(TowerBase turret)
     {
         _turretToBuild = turret;
+        DeselectTile();
     }
 
     public void BuildTurretOn(FloorTile floorTile)

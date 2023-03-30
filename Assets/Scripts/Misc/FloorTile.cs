@@ -35,16 +35,24 @@ public class FloorTile : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!_buildManager.CanBuild)
+        if (EventSystem.current.IsPointerOverGameObject())
             return;
-        
+
         if (currentTurret != null)
         {
-            Debug.Log("Can't build there!");
+            _buildManager.SelectTileWithTurret(this);
             return;
         }
         
+        if (!_buildManager.CanBuild)
+            return;
+        
         // Build a turret
         _buildManager.BuildTurretOn(this);
+    }
+
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + new Vector3(0f, 7.5f, 0f);
     }
 }

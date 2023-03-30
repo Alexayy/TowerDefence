@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
 
 public abstract class EnemyBase : MonoBehaviour, IPooledObject
@@ -15,6 +11,8 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
 
     private Vector3[] _wayPoints;
     private int currentWayPointIndex;
+
+    public GameObject deathEffect;
     
     public int Reward { get { return _reward; } }
     public int Damage { get { return _damage; } }
@@ -42,17 +40,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
         }
     }
 
-    protected virtual void DoDamage(int playerHealth)
-    {
-        if (playerHealth <= 0)
-        {
-            // Player loses;
-            Debug.Log("Player lost!");
-            return;
-        }
-    }
-
-    public virtual void TakeDamage(int damageTaken)
+    public void TakeDamage(int damageTaken)
     {
         if (_maxHealth <= 0)
         {
@@ -78,7 +66,11 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
 
     public void OnObjectDespawn()
     {
+        GameManager.Currency += _reward;
         ObjectPooler.Instance.ReturnToPool(gameObject);
+        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+        
         Debug.Log($"{name} is despawned!");
     }
 
