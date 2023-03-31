@@ -51,4 +51,14 @@ public class GameManager : MonoBehaviour
         GameObject enemy = ObjectPooler.Instance.SpawnFromPool($"Enemy{enemyIndex}", spawnLocation.position, Quaternion.identity);
         enemy.GetComponent<EnemyBase>().SetWaypoints();
     }
+    
+    public void PauseGame ()
+    {
+        Time.timeScale = 0;
+    }
+    
+    public void ResumeGame ()
+    {
+        Time.timeScale = 1;
+    }
 }
