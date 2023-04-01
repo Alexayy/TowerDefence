@@ -21,9 +21,14 @@ public class BuildManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
     public void SelectTileWithTurret(FloorTile tile)

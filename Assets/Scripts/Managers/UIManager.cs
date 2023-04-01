@@ -36,9 +36,13 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
-        else
+        }
+        else 
+        {
             Destroy(gameObject);
+        }
         
         _androidPauseButton.gameObject.SetActive(false);
         
@@ -62,7 +66,11 @@ public class UIManager : MonoBehaviour
         });
         
         _restartGame.onClick.RemoveAllListeners();
-        _restartGame.onClick.AddListener(delegate { SceneManager.LoadScene("Start"); });
+        _restartGame.onClick.AddListener(delegate
+        {
+            ClearScreen();
+            SceneManager.LoadScene("Start");
+        });
         
         _quitButton.onClick.RemoveAllListeners();
         _quitButton.onClick.AddListener(Application.Quit);
@@ -99,8 +107,11 @@ public class UIManager : MonoBehaviour
         _currency.text = $"${GameManager.Currency.ToString()}";
         _lives.text = $"Lives: {GameManager.Health.ToString()}";
 
-        _levelOfLevel.text = $"{GameManager.Instance.waveNumber} / {GameManager.Instance.numberOfSpawnLevels} waves";
-
+        if (GameManager.Instance != null)
+        {
+            _levelOfLevel.text = $"{GameManager.Instance.waveNumber} / {GameManager.Instance.numberOfSpawnLevels} waves";
+        }
+        
 #if UNITY_STANDALONE_WIN || UNITY_WEBGL || UNITY_EDITOR
         if (Input.GetKeyUp(KeyCode.Escape))
         {
@@ -139,5 +150,11 @@ public class UIManager : MonoBehaviour
         _panelClosePauseMenu.interactable = false;
         _endText.text = "You Lose";
         _endButtonText.text = "Try Again";
+    }
+
+    public void ClearScreen()
+    {
+        _pausePanel.SetActive(false);
+        GameManager.Instance.ResumeGame();
     }
 }

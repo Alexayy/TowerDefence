@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9063827215349907379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9063827215349907378}
+  - component: {fileID: 9063827215349907377}
+  m_Layer: 0
+  m_Name: BuildManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9063827215349907378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063827215349907379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9063827215349907377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063827215349907379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35044938dddf7d04cbe486f5e8d91e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorTileUI: {fileID: 0}
+  turretBasillica: {fileID: -803092438561735486, guid: 34949efe66c8baf42a99b5de0bf96f0a, type: 3}
+  turretBay: {fileID: 179037559217159795, guid: 97ee063ec8f84514781a0d277a8a5050, type: 3}
+  turretFurnace: {fileID: -9207321255707876481, guid: ed2d49176cc731c4493c600a0615dcc8, type: 3}
+  turretPitter: {fileID: -1971759540366301305, guid: 4e8e3919917558146b731109f4d414a1, type: 3}
+  turretHunter: {fileID: 4696391510008797524, guid: 31fd817328ef80045ad173e55a340862, type: 3}

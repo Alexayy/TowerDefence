@@ -5,25 +5,17 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    // public Transform enemyPrefab;
-    // public float waveCountDownTimer = 5f;
-    //
-    // private float _countDown = 2f;
-    //
-    // private void Update()
-    // {
-    //     if (_countDown <= 0f)
-    //     {
-    //         // SpawnWave();
-    //         _countDown = waveCountDownTimer;
-    //     }
-    //
-    //     _countDown -= Time.deltaTime;
-    // }
+    public static WaveManager Instance;
 
-    // private void SpawnWave()
-    // {
-    //     ObjectPooler.Instance.SpawnFromPool("Enemy1", GameManager.Instance.spawnLocation.position, GameManager.Instance.spawnLocation.rotation);
-    //     Debug.Log("Wave incoming.");
-    // }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else 
+        {
+            Destroy(gameObject);
+        }
+    }
 }

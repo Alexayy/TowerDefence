@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &70534867923188857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70534867923188856}
+  - component: {fileID: 70534867923188859}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &70534867923188856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70534867923188857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &70534867923188859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70534867923188857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981f4027a08d037408d9efa2621eb8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPrefabs:
+  - {fileID: 7251551811677206329, guid: 4def0fc9c93ff9d478e693c31aa1e3d1, type: 3}
+  - {fileID: 5599786168477501751, guid: a72586b692944bf4d888a393ab117a51, type: 3}
+  - {fileID: -5131354159661134020, guid: 95c0c44e3cd70c74ea001a0c5e3efdc7, type: 3}
+  - {fileID: -5045262686341437189, guid: dc8fc1c0b40af914d9a2db68a69b0994, type: 3}
+  - {fileID: -4242660379228119935, guid: b5b4d40fd09e45c4bbbccc4d9e013c9b, type: 3}
+  spawnLocation: {fileID: 196097651788363994, guid: c1354f21455919247bf1c766b978c1f8, type: 3}
+  startingHealth: 5
+  startMoneyAmount: 10000
+  numberOfSpawnLevels: 10
+  waveNumber: 0
+  youWinSound: {fileID: 8300000, guid: 74c2e3101ac935c4783a18ef5f1f837e, type: 3}
+  youLoseSound: {fileID: 8300000, guid: 3ee039341ff707548b1791736e66cfd1, type: 3}
