@@ -22,11 +22,6 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     public GameObject deathEffect;
     public AudioClip dieSound;
     public AudioClip spawnSound;
-    
-    private void Awake()
-    {
-        // _wayPoints = WaypointManager.Instance.GetWaypoints();
-    }
 
     private void Update()
     {
@@ -64,6 +59,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     {
         // play death animation coroutine
         SFXManager.Instance.PlaySound(dieSound);
+        GameManager.Instance.endScore += _reward;
         OnObjectDespawn();
     }
 

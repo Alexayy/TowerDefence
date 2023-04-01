@@ -3,9 +3,9 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     [Header("Parameters")]
-    public float panSpeed = 20f;
+    public float panSpeed = 10f;
     public float panBorderThickness = 10f;
-    public float scrollSpeed = 20f;
+    public float scrollSpeed = 10f;
     public float minY = 10f;
     public float maxY = 80f;
     public float maxDistanceFromInitialPosition = 30f; // Adjust as needed

@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [Header("Audio")]
     public AudioClip youWinSound;
     public AudioClip youLoseSound;
+
+    public int endScore = 0;
     
     private void Awake()
     {
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         CancelInvoke("SpawnAtInterval");
+        Debug.Log($"End score: {endScore}");
+        PlayFabManager.Instance.SendLeaderboard(endScore);
     }
     
     public void PauseGame()
