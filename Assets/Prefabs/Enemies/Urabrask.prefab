@@ -587,7 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 15
   _maxHealth: 20
-  _damage: 4
+  _damage: 3
   _reward: 5
   healthSlider: {fileID: 4667084931048702664}
   deathEffect: {fileID: 3462375439517385660, guid: 082464a23f113d14ab1bd311f970465c, type: 3}

@@ -103,6 +103,11 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _pausePanel.SetActive(false);
+        _basillicaTurret.gameObject.GetComponentInChildren<TMP_Text>().text = $"The Fair Basillica ${BuildManager.Instance.turretBasillica._cost}";
+        _bayTurret.gameObject.GetComponentInChildren<TMP_Text>().text = $"Surgical Bay ${BuildManager.Instance.turretBay._cost}";
+        _drosTurret.gameObject.GetComponentInChildren<TMP_Text>().text = $"Dros Pitter ${BuildManager.Instance.turretPitter._cost}";
+        _hunterTurret.gameObject.GetComponentInChildren<TMP_Text>().text = $"Maze Hunter ${BuildManager.Instance.turretHunter._cost}";
+        _furnaceTurret.gameObject.GetComponentInChildren<TMP_Text>().text = $"The Autonomous Furnace ${BuildManager.Instance.turretFurnace._cost}";
     }
 
     private void Update()

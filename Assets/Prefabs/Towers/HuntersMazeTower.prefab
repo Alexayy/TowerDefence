@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cost: 200
   _sellPrice: 120
-  _damage: 10
-  _range: 10
+  _damage: 12
+  _range: 18
   _fireInterval: 1
   _fireCountdown: 0.5
   _upgradeCost: 100

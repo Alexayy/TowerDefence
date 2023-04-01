@@ -676,10 +676,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad7e5ed337050e4a829641ddcda04aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 9
   _maxHealth: 60
   _damage: 4
-  _reward: 6
+  _reward: 12
   healthSlider: {fileID: 2837238288522696538}
   deathEffect: {fileID: 3462375439517385660, guid: 082464a23f113d14ab1bd311f970465c, type: 3}
   dieSound: {fileID: 8300000, guid: e63c4f78d604c124f8df0350ccfabf8c, type: 3}

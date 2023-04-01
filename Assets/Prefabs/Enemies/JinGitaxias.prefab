@@ -252,7 +252,7 @@ MonoBehaviour:
   _speed: 8
   _maxHealth: 40
   _damage: 6
-  _reward: 7
+  _reward: 10
   healthSlider: {fileID: 5465625456068647512}
   deathEffect: {fileID: 3462375439517385660, guid: 082464a23f113d14ab1bd311f970465c, type: 3}
   dieSound: {fileID: 8300000, guid: e63c4f78d604c124f8df0350ccfabf8c, type: 3}
