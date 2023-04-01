@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +15,9 @@ public class GameManager : MonoBehaviour
     public int startingHealth = 50;
     public static int Currency;
     public int startMoneyAmount = 500;
+
+    public int numberOfSpawnLevels = 10;
+    public int waveNumber = 0;
     
     private void Awake()
     {
@@ -26,35 +31,55 @@ public class GameManager : MonoBehaviour
     {
         Health = startingHealth;
         Currency = startMoneyAmount;
-        InvokeRepeating("SpawnAtInterval", 0f, 5f);
+        
+        StartGame();
     }
 
-    private void EndGame()
+    public void StartGame()
+    {
+        InvokeRepeating("SpawnAtInterval", 0f, 5f);
+    }
+    
+    public void EndGame()
     {
         CancelInvoke("SpawnAtInterval");
-        
-        // Lives for lose / win
     }
 
     public void TakeDamage(int damage)
     {
         if (Health <= 0)
+        {
+            UIManager.Instance.YouLose();
+            PauseGame();
             Debug.Log("DIE PLAYER");
-
+            EndGame();
+        }
+        
         Health -= damage;
     }
 
     private void SpawnAtInterval()
     {
         int enemyIndex = Random.Range(1, _enemyPrefabs.Length);
-
-        GameObject enemy = ObjectPooler.Instance.SpawnFromPool($"Enemy{enemyIndex}", spawnLocation.position, Quaternion.identity);
+        
+        GameObject enemy =
+            ObjectPooler.Instance.SpawnFromPool($"Enemy{enemyIndex}", spawnLocation.position, Quaternion.identity);
         enemy.GetComponent<EnemyBase>().SetWaypoints();
+        
+        if (waveNumber >= numberOfSpawnLevels && Health > 0)
+        {
+            UIManager.Instance.YouWin();
+            PauseGame();
+            EndGame();
+        }
+        
+        waveNumber++;
+        Debug.Log($"{waveNumber}");
     }
     
-    public void PauseGame ()
+    public void PauseGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0; 
     }
     
     public void ResumeGame ()

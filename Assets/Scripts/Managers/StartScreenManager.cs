@@ -13,6 +13,7 @@ public class StartScreenManager : MonoBehaviour
     public void StartAndMoveToNextScene()
     {
         SceneManager.LoadScene("Game");
+        GameManager.Instance.StartGame();
     }
 
     public void QuitAndExitApplication()
