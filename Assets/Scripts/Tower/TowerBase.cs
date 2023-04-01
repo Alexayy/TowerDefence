@@ -32,7 +32,7 @@ public abstract class TowerBase : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, .5f);
-        Debug.Log($"Turret: {gameObject.name}");
+        // Debug.Log($"Turret: {gameObject.name}");
     }
 
     private void Update()
@@ -65,7 +65,7 @@ public abstract class TowerBase : MonoBehaviour
             SFXManager.Instance.PlaySound(shootSound);
         }
 
-        Debug.Log($"Shoot!");
+        // Debug.Log($"Shoot!");
     }
     
     private void UpdateTarget()

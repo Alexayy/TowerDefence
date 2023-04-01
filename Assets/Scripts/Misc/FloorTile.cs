@@ -25,7 +25,7 @@ public class FloorTile : MonoBehaviour
     {
         if (GameManager.Currency < towerBase.Cost)
         {
-            Debug.Log("Not enough mana for that!");
+            // Debug.Log("Not enough mana for that!");
             return;
         }
 
@@ -40,7 +40,7 @@ public class FloorTile : MonoBehaviour
     {
         if (GameManager.Currency < towerBase.UpgradePrice)
         {
-            Debug.Log("Not enough mana for that!");
+            // Debug.Log("Not enough mana for that!");
             return;
         }
 

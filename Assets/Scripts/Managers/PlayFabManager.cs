@@ -99,7 +99,7 @@ public class PlayFabManager : MonoBehaviour
             texts[1].text = item.PlayFabId.ToString();
             texts[2].text = item.StatValue.ToString();
             
-            Debug.Log($"{item.Position} {item.PlayFabId} {item.StatValue}");
+            // Debug.Log($"{item.Position} {item.PlayFabId} {item.StatValue}");
         }   
     }
 }

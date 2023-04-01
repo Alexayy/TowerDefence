@@ -72,7 +72,7 @@ public class ObjectPooler : MonoBehaviour
         }
         else
         {
-            Debug.Log("Nothing to spawn!");
+            // Debug.Log("Nothing to spawn!");
             return null;
         }
 

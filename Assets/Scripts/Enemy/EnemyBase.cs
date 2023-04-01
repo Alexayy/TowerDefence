@@ -83,7 +83,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
         currentWayPointIndex = 0;
         _currentHealth = _maxHealth;
         SFXManager.Instance.PlaySound(spawnSound);
-        Debug.Log($"{name} is spawned!");
+        // Debug.Log($"{name} is spawned!");
     }
 
     public void OnObjectDespawn()
@@ -93,7 +93,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
         
-        Debug.Log($"{name} is despawned!");
+        // Debug.Log($"{name} is despawned!");
     }
 
     #endregion

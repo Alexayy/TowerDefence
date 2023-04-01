@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.YouLose();
             SFXManager.Instance.PlaySound(youLoseSound);
             PauseGame();
-            Debug.Log("DIE PLAYER");
+            // Debug.Log("DIE PLAYER");
             EndGame();
         }
     }
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         CancelInvoke("SpawnAtInterval");
-        Debug.Log($"End score: {endScore}");
+        // Debug.Log($"End score: {endScore}");
         PlayFabManager.Instance.SendLeaderboard(endScore);
     }
     

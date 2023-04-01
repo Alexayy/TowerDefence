@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour, IPooledObject
 
     private void HitTarget()
     {
-        Debug.Log($"HIT");
+        // Debug.Log($"HIT");
         Destroy(gameObject);
     }
 
@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
-        Debug.Log("AAA");
+        // Debug.Log("AAA");
         Invoke("Despawn", lifespan);
     }
 
