@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    [Header("Parameters")]
     public float panSpeed = 20f;
     public float panBorderThickness = 10f;
     public float scrollSpeed = 20f;

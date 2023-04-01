@@ -3,12 +3,10 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager Instance;
-    private TowerBase _turretToBuild;
-
-    private FloorTile _selectedTileWithTurret;
-
-    public FloorTileUI floorTileUI;
     
+    private TowerBase _turretToBuild;
+    private FloorTile _selectedTileWithTurret;
+    public FloorTileUI floorTileUI;
     public bool CanBuild => _turretToBuild != null;
 
     [Header("Turret types")]
@@ -30,6 +28,28 @@ public class BuildManager : MonoBehaviour
         }
     }
 
+    #region Turret Methods
+    
+    public void SetTurretToBuild(TowerBase turret)
+    {
+        _turretToBuild = turret;
+        DeselectTile();
+    }
+
+    public TowerBase GetTurretTobuild()
+    {
+        return _turretToBuild;
+    }
+
+    public static Vector3 TurretPlacementPosition(FloorTile floorTile)
+    {
+        return floorTile.transform.position + new Vector3(0f, 2f, 0f);
+    }
+    
+    #endregion
+
+    #region Tile Selection Methods
+
     public void SelectTileWithTurret(FloorTile tile)
     {
         if (_selectedTileWithTurret == tile)
@@ -48,20 +68,7 @@ public class BuildManager : MonoBehaviour
         _selectedTileWithTurret = null;
         floorTileUI.Hide();
     }
+
+    #endregion
     
-    public void SetTurretToBuild(TowerBase turret)
-    {
-        _turretToBuild = turret;
-        DeselectTile();
-    }
-
-    public TowerBase GetTurretTobuild()
-    {
-        return _turretToBuild;
-    }
-
-    public static Vector3 TurretPlacementPosition(FloorTile floorTile)
-    {
-        return floorTile.transform.position + new Vector3(0f, 2f, 0f);
-    }
 }

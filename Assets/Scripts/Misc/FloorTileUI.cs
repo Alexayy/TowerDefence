@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class FloorTileUI : MonoBehaviour
 {
+    [Header("Turret on tile UI")]
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Button _sellButton;
     [SerializeField] private TMP_Text _sellButtonText;

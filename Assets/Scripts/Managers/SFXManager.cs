@@ -8,7 +8,6 @@ public class SFXManager : MonoBehaviour
     public static SFXManager Instance;
 
     [SerializeField] private AudioSource _sfxSource;
-    // [SerializeField] private AudioSource _bgLoopSource;
     
     private void Awake()
     {

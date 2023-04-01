@@ -6,11 +6,11 @@ public class FloorTile : MonoBehaviour
 {
     [SerializeField] private Color _hoverColor;
     [FormerlySerializedAs("_currentTurret")] public GameObject currentTurret;
+    public TowerBase towerBase;
+    
     private Renderer _renderer;
     private Color _defaultColor;
     private BuildManager _buildManager;
-
-    public TowerBase towerBase;
 
     private void Start()
     {
@@ -18,6 +18,8 @@ public class FloorTile : MonoBehaviour
         _defaultColor = _renderer.material.color;
         _buildManager = BuildManager.Instance;
     }
+
+    #region Turret Functionalities on the Tile
 
     void BuildTurret(TowerBase towerBase)
     {
@@ -58,6 +60,15 @@ public class FloorTile : MonoBehaviour
             towerBase = null;
         }
     }
+    
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + new Vector3(0f, 7.5f, 0f);
+    }
+
+    #endregion
+
+    #region Mouse / Touch Events
 
     private void OnMouseEnter()
     {
@@ -90,8 +101,5 @@ public class FloorTile : MonoBehaviour
         BuildTurret(_buildManager.GetTurretTobuild());
     }
 
-    public Vector3 GetBuildPosition()
-    {
-        return transform.position + new Vector3(0f, 7.5f, 0f);
-    }
+    #endregion
 }

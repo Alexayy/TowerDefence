@@ -6,19 +6,20 @@ using UnityEngine.UI;
 
 public abstract class EnemyBase : MonoBehaviour, IPooledObject
 {
+    [Header("Enemy Attributes")]
     [SerializeField] private float _speed;
     [FormerlySerializedAs("_health")] [SerializeField] private int _maxHealth;
     private int _currentHealth;
     [SerializeField] private int _damage;
     [SerializeField] private int _reward;
 
-    [SerializeField] private Slider healthSlider;
-
-    private Vector3[] _wayPoints;
+    [Header("Pathing and path related")]
     private int currentWayPointIndex;
+    private Vector3[] _wayPoints;
 
+    [Header("Enemy UI and Misc")]
+    [SerializeField] private Slider healthSlider;
     public GameObject deathEffect;
-
     public AudioClip dieSound;
     public AudioClip spawnSound;
     
@@ -45,6 +46,8 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
         }
     }
 
+    #region Damage and Death
+
     public void TakeDamage(int damageTaken)
     {
         if (_currentHealth <= 0)
@@ -57,12 +60,27 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
         healthSlider.value = (float)_currentHealth / (float)_maxHealth;
     }
 
-    protected virtual void Die()
+    protected void Die()
     {
         // play death animation coroutine
         SFXManager.Instance.PlaySound(dieSound);
         OnObjectDespawn();
     }
+
+    #endregion
+
+    #region Pathing
+
+    public void SetWaypoints()
+    {
+        _wayPoints = WaypointManager.Instance.GetWaypoints();
+        if (_wayPoints == null)
+            return;
+    }
+
+    #endregion
+
+    #region Implemented
 
     public void OnObjectSpawn()
     {
@@ -82,10 +100,6 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
         Debug.Log($"{name} is despawned!");
     }
 
-    public void SetWaypoints()
-    {
-        _wayPoints = WaypointManager.Instance.GetWaypoints();
-        if (_wayPoints == null)
-            return;
-    }
+    #endregion
+    
 }

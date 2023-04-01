@@ -21,6 +21,7 @@ public abstract class TowerBase : MonoBehaviour
     [SerializeField] private float _fireTimer = 0f;
     public string enemyTag = "Enemy";
 
+    [Header("Audio")]
     public AudioClip shootSound;
     public AudioClip placedTurretSound;
 

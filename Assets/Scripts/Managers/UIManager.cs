@@ -9,29 +9,32 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     
+    [Header("Level Info UI")]
     [SerializeField] private TMP_Text _currency;
     [SerializeField] private TMP_Text _lives;
+    [SerializeField] private TMP_Text _levelOfLevel;
 
+    [Header("Shop related and Turret Buttons")]
     [SerializeField] private Button _basillicaTurret;
     [SerializeField] private Button _bayTurret;
     [SerializeField] private Button _drosTurret;
     [SerializeField] private Button _hunterTurret;
     [SerializeField] private Button _furnaceTurret;
-    
     [SerializeField] private Shop _shop;
-
+    
     [Header("Pause UI")] 
     [SerializeField] private GameObject _pausePanel;
+
     [SerializeField] private Button _androidPauseButton;
     [SerializeField] private Button _panelClosePauseMenu;
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _restartGame;
     
+    [Header("End Screen Before Transition")]
     [SerializeField] private TMP_Text _endText;
     [SerializeField] private TMP_Text _endButtonText;
 
-    [SerializeField] private TMP_Text _levelOfLevel;
 
     private void Awake()
     {
@@ -126,11 +129,17 @@ public class UIManager : MonoBehaviour
 
     }
 
+    #region Selected Turret To Spawn
+
     public void SpawnBasillicaTurret() { _shop.PurchaseBasillicaTurret(); }
     public void SpawnBayTurret() { _shop.PurchaseBayTurret(); }
     public void SpawnDrosTurret() { _shop.PurchasePitterTurret(); }
     public void SpawnHunterTurret() { _shop.PurchaseHunterTurret(); }
     public void SpawnFurnaceTurret() { _shop.PurchaseFurnaceTurret(); }
+
+    #endregion
+
+    #region Win / Lose Screen Setups
 
     public void YouWin()
     {
@@ -151,6 +160,8 @@ public class UIManager : MonoBehaviour
         _endText.text = "You Lose";
         _endButtonText.text = "Try Again";
     }
+
+    #endregion
 
     public void ClearScreen()
     {

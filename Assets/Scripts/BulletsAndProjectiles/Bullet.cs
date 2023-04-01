@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IPooledObject
 {
+    [Header("Bullet Speed")]
+    public float speed = 50f;
+    
+    [Header("Enemy Fields")]
     private Transform _target;
     private EnemyBase _enemy;
-    public float speed = 50f;
+    
+    [Header("Properties and Other")]
     [SerializeField] private float lifespan = 2.0f;
     
-    public void SeekAndDamage(Transform target)
-    {
-        _target = target;
-        _enemy = _target.GetComponent<EnemyBase>();
-    }
-
     private void Update()
     {
         if (_target == null)
@@ -33,11 +32,23 @@ public class Bullet : MonoBehaviour, IPooledObject
         transform.Translate(direction.normalized * distance, Space.World);
     }
 
+    #region Bullet Hit Methods
+
+    public void SeekAndDamage(Transform target)
+    {
+        _target = target;
+        _enemy = _target.GetComponent<EnemyBase>();
+    }
+
     private void HitTarget()
     {
         Debug.Log($"HIT");
         Destroy(gameObject);
     }
+
+    #endregion
+
+    #region Implemented
 
     public void OnObjectSpawn()
     {
@@ -49,4 +60,7 @@ public class Bullet : MonoBehaviour, IPooledObject
     {
         CancelInvoke();
     }
+
+    #endregion
+   
 }

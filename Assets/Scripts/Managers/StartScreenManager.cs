@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 
 public class StartScreenManager : MonoBehaviour
 {
-    [SerializeField] private Button _startGame;
-    [SerializeField] private Button _quitGame;
+    private Button _startGame;
+    private Button _quitGame;
 
     public void StartAndMoveToNextScene()
     {

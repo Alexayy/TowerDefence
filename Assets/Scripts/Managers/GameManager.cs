@@ -1,12 +1,11 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Enemy Information")]
     [SerializeField] private EnemyBase[] _enemyPrefabs;
     public Transform spawnLocation;
 
@@ -16,9 +15,11 @@ public class GameManager : MonoBehaviour
     public static int Currency;
     public int startMoneyAmount = 500;
 
+    [Header("Level Information")]
     public int numberOfSpawnLevels = 10;
     public int waveNumber = 0;
 
+    [Header("Audio")]
     public AudioClip youWinSound;
     public AudioClip youLoseSound;
     
@@ -42,15 +43,7 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
-    public void StartGame()
-    {
-        InvokeRepeating("SpawnAtInterval", 0f, 5f);
-    }
-    
-    public void EndGame()
-    {
-        CancelInvoke("SpawnAtInterval");
-    }
+    #region Spawning and Damaging
 
     public void TakeDamage(int damage)
     {
@@ -84,6 +77,20 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
+
+    #endregion
+
+    #region Game Loop
+
+    public void StartGame()
+    {
+        InvokeRepeating("SpawnAtInterval", 0f, 5f);
+    }
+    
+    public void EndGame()
+    {
+        CancelInvoke("SpawnAtInterval");
+    }
     
     public void PauseGame()
     {
@@ -94,4 +101,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    #endregion
 }
