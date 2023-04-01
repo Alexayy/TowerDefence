@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
         _restartGame.onClick.AddListener(delegate
         {
             ClearScreen();
-            SceneManager.LoadScene("Start");
+            SceneManager.LoadScene("End");
         });
         
         _quitButton.onClick.RemoveAllListeners();

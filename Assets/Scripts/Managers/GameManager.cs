@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Health -= damage;
+        
         if (Health <= 0)
         {
             UIManager.Instance.YouLose();
@@ -62,17 +64,17 @@ public class GameManager : MonoBehaviour
             Debug.Log("DIE PLAYER");
             EndGame();
         }
-        
-        Health -= damage;
     }
 
     private void SpawnAtInterval()
     {
-        int enemyIndex = Random.Range(1, _enemyPrefabs.Length);
+        int enemyIndex = Random.Range(1, _enemyPrefabs.Length + 1);
         
         GameObject enemy =
             ObjectPooler.Instance.SpawnFromPool($"Enemy{enemyIndex}", spawnLocation.position, Quaternion.identity);
         enemy.GetComponent<EnemyBase>().SetWaypoints();
+        
+        waveNumber++;
         
         if (waveNumber >= numberOfSpawnLevels && Health > 0)
         {
@@ -81,9 +83,6 @@ public class GameManager : MonoBehaviour
             PauseGame();
             EndGame();
         }
-        
-        waveNumber++;
-        Debug.Log($"{waveNumber}");
     }
     
     public void PauseGame()

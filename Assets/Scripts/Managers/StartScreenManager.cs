@@ -13,11 +13,16 @@ public class StartScreenManager : MonoBehaviour
     public void StartAndMoveToNextScene()
     {
         SceneManager.LoadScene("Game");
-        GameManager.Instance.StartGame();
+        StartCoroutine(IStartGame());
     }
 
     public void QuitAndExitApplication()
     {
         Application.Quit();
+    }
+
+    private IEnumerator IStartGame()
+    {
+        yield return new WaitUntil(() => GameManager.Instance != null);
     }
 }
