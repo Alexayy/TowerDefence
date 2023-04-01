@@ -21,6 +21,9 @@ public abstract class TowerBase : MonoBehaviour
     [SerializeField] private float _fireTimer = 0f;
     public string enemyTag = "Enemy";
 
+    public AudioClip shootSound;
+    public AudioClip placedTurretSound;
+
     public int Cost => _cost;
     public int SellPrice => _sellPrice;
     public int UpgradePrice => _upgradeCost;
@@ -58,7 +61,7 @@ public abstract class TowerBase : MonoBehaviour
         {
             bullet.SeekAndDamage(_target);
             _target.GetComponent<EnemyBase>().TakeDamage(_damage);
-            Debug.Log($"Target {_target.name} shot for {_damage}");
+            SFXManager.Instance.PlaySound(shootSound);
         }
 
         Debug.Log($"Shoot!");

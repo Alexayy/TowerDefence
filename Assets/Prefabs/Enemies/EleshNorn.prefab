@@ -645,6 +645,8 @@ MonoBehaviour:
   _reward: 10
   healthSlider: {fileID: 1374116702237775254}
   deathEffect: {fileID: 3462375439517385660, guid: 082464a23f113d14ab1bd311f970465c, type: 3}
+  dieSound: {fileID: 8300000, guid: e63c4f78d604c124f8df0350ccfabf8c, type: 3}
+  spawnSound: {fileID: 8300000, guid: b043d0de2179906488bacc076f4d61aa, type: 3}
   nameOfThis: Elesh Norn
   nameDisplay: {fileID: 8548660745900444570}
 --- !u!1 &8165849449088849770

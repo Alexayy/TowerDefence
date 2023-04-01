@@ -255,3 +255,5 @@ MonoBehaviour:
   _target: {fileID: 0}
   _fireTimer: 0
   enemyTag: Enemy
+  shootSound: {fileID: 8300000, guid: 2c974d669a333fe48946726ab7a157dd, type: 3}
+  placedTurretSound: {fileID: 8300000, guid: 120060fbac33a1f4a97f1c70ded0b565, type: 3}

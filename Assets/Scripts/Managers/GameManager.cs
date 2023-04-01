@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public int numberOfSpawnLevels = 10;
     public int waveNumber = 0;
+
+    public AudioClip youWinSound;
+    public AudioClip youLoseSound;
     
     private void Awake()
     {
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
         if (Health <= 0)
         {
             UIManager.Instance.YouLose();
+            SFXManager.Instance.PlaySound(youLoseSound);
             PauseGame();
             Debug.Log("DIE PLAYER");
             EndGame();
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
         if (waveNumber >= numberOfSpawnLevels && Health > 0)
         {
             UIManager.Instance.YouWin();
+            SFXManager.Instance.PlaySound(youWinSound);
             PauseGame();
             EndGame();
         }

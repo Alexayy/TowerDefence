@@ -255,6 +255,8 @@ MonoBehaviour:
   _reward: 7
   healthSlider: {fileID: 5465625456068647512}
   deathEffect: {fileID: 3462375439517385660, guid: 082464a23f113d14ab1bd311f970465c, type: 3}
+  dieSound: {fileID: 8300000, guid: e63c4f78d604c124f8df0350ccfabf8c, type: 3}
+  spawnSound: {fileID: 8300000, guid: b043d0de2179906488bacc076f4d61aa, type: 3}
   nameOfThis: Jin-Gitaxias
   nameDisplay: {fileID: 1666085520665479177}
 --- !u!1 &1923872546045780911

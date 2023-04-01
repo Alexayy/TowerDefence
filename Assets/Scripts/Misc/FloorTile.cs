@@ -29,6 +29,7 @@ public class FloorTile : MonoBehaviour
 
         GameManager.Currency -= towerBase.Cost;
         GameObject turretGo = Instantiate(towerBase.gameObject, BuildManager.TurretPlacementPosition(this), Quaternion.identity);
+        SFXManager.Instance.PlaySound(towerBase.placedTurretSound);
         currentTurret = turretGo;
         this.towerBase = towerBase;
     }

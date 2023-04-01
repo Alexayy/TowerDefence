@@ -18,6 +18,9 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     private int currentWayPointIndex;
 
     public GameObject deathEffect;
+
+    public AudioClip dieSound;
+    public AudioClip spawnSound;
     
     private void Awake()
     {
@@ -57,6 +60,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     protected virtual void Die()
     {
         // play death animation coroutine
+        SFXManager.Instance.PlaySound(dieSound);
         OnObjectDespawn();
     }
 
@@ -64,6 +68,7 @@ public abstract class EnemyBase : MonoBehaviour, IPooledObject
     {
         currentWayPointIndex = 0;
         _currentHealth = _maxHealth;
+        SFXManager.Instance.PlaySound(spawnSound);
         Debug.Log($"{name} is spawned!");
     }
 
